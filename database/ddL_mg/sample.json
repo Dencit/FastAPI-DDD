@@ -1,0 +1,39 @@
+{
+  "capped": true,
+  "size": 10485760,
+  "max": 5000,
+  "storageEngine": {
+    "wiredTiger": {
+      "configString": "block_compressor=zstd"
+    }
+  },
+  "collation": {
+    "locale": "en",
+    "strength": 2
+  },
+  "validator": {
+    "$jsonSchema": {
+      "bsonType": "object",
+      "required": [
+        "name",
+        "mobile"
+      ],
+      "properties": {
+        "id": {
+          "bsonType": "int",
+          "description": "必须为非负整数"
+        },
+        "name": {
+          "bsonType": "string",
+          "description": "必须为字符串且为必填项"
+        },
+        "mobile": {
+          "bsonType": "string",
+          "description": "必须为有效的手机号码格式"
+        }
+      }
+    }
+  },
+  "validationLevel": "strict",
+  "validationAction": "error"
+}

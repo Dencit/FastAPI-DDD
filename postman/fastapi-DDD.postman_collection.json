@@ -1,0 +1,885 @@
+{
+	"info": {
+		"_postman_id": "b375b30f-e7fe-4470-b442-780d5d9505fc",
+		"name": "fastapi-DDD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1907620",
+		"_collection_link": "https://blue-shadow-7517.postman.co/workspace/LIB~e0caa0d3-8b5c-4a7f-bf60-c5841a606113/collection/1907620-b375b30f-e7fe-4470-b442-780d5d9505fc?action=share&source=collection_link&creator=1907620"
+	},
+	"item": [
+		{
+			"name": "demo",
+			"item": [
+				{
+					"name": "示例-新增",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"abcd\",\r\n    \"mobile\": \"18588891945\",\r\n    \"sex\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/demo/sample/save",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"demo",
+								"sample",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "示例-更新",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"abcd\",\r\n    \"mobile\": \"18588891949\",\r\n    \"sex\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/demo/sample/update/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"demo",
+								"sample",
+								"update",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "93"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "示例-删除",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/demo/sample/delete/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"demo",
+								"sample",
+								"delete",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "示例-详情",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/demo/sample/read?_time=1&_include=user,users&id=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"demo",
+								"sample",
+								"read"
+							],
+							"query": [
+								{
+									"key": "_time",
+									"value": "1"
+								},
+								{
+									"key": "_include",
+									"value": "user,users"
+								},
+								{
+									"key": "id",
+									"value": "1"
+								},
+								{
+									"key": "name",
+									"value": "abc",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "示例-列表-筛选",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/demo/sample/index?_search=def&name=abcde",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"demo",
+								"sample",
+								"index"
+							],
+							"query": [
+								{
+									"key": "_time",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "_search",
+									"value": "def"
+								},
+								{
+									"key": "id",
+									"value": "1,2,3",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "abcde"
+								},
+								{
+									"key": "mobile",
+									"value": "185*",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "示例-列表-关联查询",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/demo/sample/index?_time=1&_include=user,users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"demo",
+								"sample",
+								"index"
+							],
+							"query": [
+								{
+									"key": "_time",
+									"value": "1"
+								},
+								{
+									"key": "_include",
+									"value": "user,users"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "示例-列表-扩展查询",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/demo/sample/index?_time=1&_extend=user",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"demo",
+								"sample",
+								"index"
+							],
+							"query": [
+								{
+									"key": "_time",
+									"value": "1"
+								},
+								{
+									"key": "_extend",
+									"value": "user"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "示例-列表-排序",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/demo/sample/index?_sort=-id,name",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"demo",
+								"sample",
+								"index"
+							],
+							"query": [
+								{
+									"key": "_time",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "_sort",
+									"value": "-id,name"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "示例-列表-翻页",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/demo/sample/index?_page=1&_page_size=2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"demo",
+								"sample",
+								"index"
+							],
+							"query": [
+								{
+									"key": "_time",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "_pagination",
+									"value": "false",
+									"disabled": true
+								},
+								{
+									"key": "_page",
+									"value": "1"
+								},
+								{
+									"key": "_page_size",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "demo_mg",
+			"item": [
+				{
+					"name": "示例-新增",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"abcd\",\r\n    \"mobile\": \"18588891945\",\r\n    \"sex\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/demo_mg/sample/save",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"demo_mg",
+								"sample",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "示例-更新",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"abcd\",\r\n    \"mobile\": \"18588891949\",\r\n    \"sex\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/demo_mg/sample/update/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"demo_mg",
+								"sample",
+								"update",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "67d71cbf4872c642e5f827e6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "示例-删除",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/demo_mg/sample/delete/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"demo_mg",
+								"sample",
+								"delete",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "67d71e532a72f29d13a253b1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "示例-详情",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/demo_mg/sample/read?_time=1&_include=user,users&_id=67d71cbf4872c642e5f827e6",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"demo_mg",
+								"sample",
+								"read"
+							],
+							"query": [
+								{
+									"key": "_time",
+									"value": "1"
+								},
+								{
+									"key": "_include",
+									"value": "user,users"
+								},
+								{
+									"key": "id",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "abcd",
+									"disabled": true
+								},
+								{
+									"key": "_id",
+									"value": "67d71cbf4872c642e5f827e6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "示例-列表-筛选",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/demo_mg/sample/index?_time=1&_search=def&name=abcd&mobile=189*",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"demo_mg",
+								"sample",
+								"index"
+							],
+							"query": [
+								{
+									"key": "_time",
+									"value": "1"
+								},
+								{
+									"key": "_pagination",
+									"value": "false",
+									"disabled": true
+								},
+								{
+									"key": "_page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "_page_size",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "_include",
+									"value": "user,users",
+									"disabled": true
+								},
+								{
+									"key": "_extend",
+									"value": "user",
+									"disabled": true
+								},
+								{
+									"key": "_sort",
+									"value": "-id,name",
+									"disabled": true
+								},
+								{
+									"key": "_search",
+									"value": "def"
+								},
+								{
+									"key": "id",
+									"value": "1,2,3",
+									"disabled": true
+								},
+								{
+									"key": "_id",
+									"value": "67d71cbf4872c642e5f827e6,67d71cbf4872c642e5f827e6",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "abcd"
+								},
+								{
+									"key": "mobile",
+									"value": "189*"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "示例-列表-排序",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/demo_mg/sample/index?_time=1&_page=1&_sort=name,-mobile&name=abcd",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"demo_mg",
+								"sample",
+								"index"
+							],
+							"query": [
+								{
+									"key": "_time",
+									"value": "1"
+								},
+								{
+									"key": "_pagination",
+									"value": "false",
+									"disabled": true
+								},
+								{
+									"key": "_page",
+									"value": "1"
+								},
+								{
+									"key": "_page_size",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "_include",
+									"value": "user,users",
+									"disabled": true
+								},
+								{
+									"key": "_extend",
+									"value": "user",
+									"disabled": true
+								},
+								{
+									"key": "_sort",
+									"value": "name,-mobile"
+								},
+								{
+									"key": "_search",
+									"value": "def",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "1,2,3",
+									"disabled": true
+								},
+								{
+									"key": "_id",
+									"value": "67d71cbf4872c642e5f827e6,67d71cbf4872c642e5f827e6",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "abcd"
+								},
+								{
+									"key": "mobile",
+									"value": "189*",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "示例-列表-翻页",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/demo_mg/sample/index?_time=1&_page=1&_page_size=2&_search=def&name=abcd",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"demo_mg",
+								"sample",
+								"index"
+							],
+							"query": [
+								{
+									"key": "_time",
+									"value": "1"
+								},
+								{
+									"key": "_pagination",
+									"value": "false",
+									"disabled": true
+								},
+								{
+									"key": "_page",
+									"value": "1"
+								},
+								{
+									"key": "_page_size",
+									"value": "2"
+								},
+								{
+									"key": "_include",
+									"value": "user,users",
+									"disabled": true
+								},
+								{
+									"key": "_extend",
+									"value": "user",
+									"disabled": true
+								},
+								{
+									"key": "_sort",
+									"value": "-id,name",
+									"disabled": true
+								},
+								{
+									"key": "_search",
+									"value": "def"
+								},
+								{
+									"key": "id",
+									"value": "1,2,3",
+									"disabled": true
+								},
+								{
+									"key": "_id",
+									"value": "67d71cbf4872c642e5f827e6,67d71cbf4872c642e5f827e6",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "abcd"
+								},
+								{
+									"key": "mobile",
+									"value": "189*",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "chat",
+			"item": [
+				{
+					"name": "机器人-发消息",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role\": \"user\",\r\n    \"content\": \"你不是deepseek吗?\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/chat/bot/save",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"chat",
+								"bot",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "机器人-消息流",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "text/plain",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role\": \"user\",\r\n    \"content\": \"讲个笑话\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/chat/bot/stream",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"chat",
+								"bot",
+								"stream"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "home",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

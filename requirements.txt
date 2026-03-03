@@ -1,0 +1,15 @@
+fastapi~=0.115.8
+uvicorn==0.17.6
+pydantic>=1.10.0,<1.10.15
+starlette~=0.45.2
+sqlmodel==0.0.22
+sqlalchemy==2.0.20
+pymysql==1.1.0
+pydantic_settings==2.8.1
+python-dotenv==1.0.0
+sqlalchemy==2.0.20
+
+langchain==0.3
+qianfan==0.4.12.3
+redis==5.2.1
+pymongo==4.44.2
